@@ -1,0 +1,7 @@
+odo01-key
+.terraformrc
+terraform.rc
+*.terraform
+*.tfstate
+*.tfvars
+*.lock.hcl
