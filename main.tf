@@ -19,8 +19,8 @@ resource "tls_private_key" "key" {
    public_key = tls_private_key.key.public_key_openssh
  }
 # Creating Maven Security Groups
-resource "aws_security_group" "maven_sg" {
-    name = "maven-sg"
+resource "aws_security_group" "maven1-sg" {
+    name = "maven1-sg"
   description = "Allow TLS imbound traffic and all outbound traffic"
 
   ingress {
@@ -38,7 +38,7 @@ resource "aws_security_group" "maven_sg" {
     cidr_blocks = [var.allcidr]
   }
   tags = {
-    Name = "${local.name}-maven-sg"
+    Name = "${local.name}-maven1-sg"
   }
 }
 
@@ -47,7 +47,7 @@ resource "aws_instance" "maven_server" {
     ami = var.redhat
     instance_type = "t2.medium"
     key_name = aws_key_pair.key.id
-    vpc_security_group_ids = [aws_security_group.maven_sg.id]
+    vpc_security_group_ids = [aws_security_group.maven1-sg.id]
     associate_public_ip_address = true
     user_data = file("./userdata-maven.sh")
     

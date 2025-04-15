@@ -5,3 +5,5 @@ terraform.rc
 *.tfstate
 *.tfvars
 *.lock.hcl
+userdata-maven.sh
+userdata.prod.s
